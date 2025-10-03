@@ -13,7 +13,7 @@
 }
 
 *{box-sizing:border-box}
-html,body{height:100%}
+html,body{height:100%; overflow-x:hidden;} /* 👈 prevents horizontal scroll */
 body{
   margin:0;
   color:var(--ink);
@@ -23,7 +23,7 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-.container{max-width:1100px;margin-inline:auto;padding-inline:20px}
+.container{max-width:1100px;margin-inline:auto;padding-inline:20px;width:100%;} /* 👈 added width:100% */
 .center{text-align:center}
 .muted{color:var(--muted)}
 .small{font-size:.925rem}
@@ -46,6 +46,7 @@ body{
 .topbar{
   height:64px; display:flex; align-items:center; gap:24px;
   justify-content:space-between;
+  padding-inline:20px;
 }
 .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);font-weight:900}
 .brand-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#e0e7ff;color:var(--brand)}
@@ -63,13 +64,13 @@ body{
 .hamburger span{display:block;width:22px;height:2px;background:#334155;border-radius:2px}
 
 /* Drawer (mobile menu) */
-.drawer{display:none;position:fixed;inset:64px 0 auto 0;background:#fff;border-top:1px solid var(--line);padding:16px;z-index:50}
+.drawer{display:none;position:fixed;inset:64px 0 auto 0;background:#fff;border-top:1px solid var(--line);padding:16px;z-index:50;width:100%;}
 .drawer a{display:block;padding:12px 6px;text-decoration:none;color:var(--ink);font-weight:700;border-radius:8px}
 .drawer a:hover{background:var(--soft)}
 .drawer-cta{padding:8px 0}
 
 /* --- Hero --- */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;padding-block:28px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;padding-block:28px;width:100%;}
 .hero h1{font-size:2.6rem;line-height:1.2;margin:0 0 14px}
 .accent-underline{box-shadow:inset 0 -8px 0 #dbeafe}
 .hero p{margin:0 0 18px;color:var(--muted)}
@@ -81,10 +82,12 @@ body{
   box-shadow:0 1px 0 rgba(15,23,42,.02), 0 8px 28px rgba(2,6,23,.05);
 }
 
-.hero-media{padding:14px}
+.hero-media{padding:14px;max-width:100%;}
 .media-thumb{
-  height:220px; border-radius:10px; background:
-    linear-gradient(135deg,#e5e7eb 25%,#dbeafe 25%,#dbeafe 50%,#e5e7eb 50%,#e5e7eb 75%,#dbeafe 75%) 0/20px 20px,
+  width:100%; /* 👈 keeps inside parent */
+  max-width:100%; 
+  height:220px; border-radius:10px; 
+  background:linear-gradient(135deg,#e5e7eb 25%,#dbeafe 25%,#dbeafe 50%,#e5e7eb 50%,#e5e7eb 75%,#dbeafe 75%) 0/20px 20px,
     url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
 }
 .media-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
@@ -95,12 +98,12 @@ body{
 .media-stats span{color:var(--muted);font-size:.85rem}
 
 /* --- Sections --- */
-.section{padding:46px 0}
+.section{padding:46px 0;width:100%;}
 .section-alt{background:#f6f8fb;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 
 /* Features grid */
 .features-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px;width:100%;
 }
 .feature{padding:18px}
 .feature .ico{font-size:24px;display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:#eef2ff;color:var(--brand);margin-bottom:10px}
@@ -108,18 +111,18 @@ body{
 .feature p{margin:0;color:var(--muted)}
 
 /* Demos */
-.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;width:100%;}
 .demo{padding:16px}
 .chip{display:inline-block;background:#eef2ff;color:var(--brand);font-weight:800;font-size:.75rem;border:1px solid #e0e7ff;padding:4px 8px;border-radius:999px;margin-bottom:10px}
-.demo-thumb{height:140px;border-radius:10px;border:1px dashed #cbd5e1;background:linear-gradient(180deg,#f1f5f9, #fff)}
+.demo-thumb{width:100%;max-width:100%;height:140px;border-radius:10px;border:1px dashed #cbd5e1;background:linear-gradient(180deg,#f1f5f9, #fff)}
 .demo h4{margin:8px 0 6px}
 
 /* CTA banner */
-.cta-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px;padding:18px;border-left:5px solid var(--brand);background:#f1f5ff;border-color:var(--ring)}
+.cta-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px;padding:18px;border-left:5px solid var(--brand);background:#f1f5ff;border-color:var(--ring);width:100%;}
 .cta-actions{display:flex;gap:10px}
 
 /* Pricing */
-.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px;width:100%;}
 .price{padding:18px;position:relative}
 .price h3{margin:0 0 6px}
 .price-row{display:flex;align-items:flex-end;gap:6px;margin:6px 0 10px}
@@ -135,9 +138,9 @@ body{
 .highlighted{outline:2px solid var(--ring);box-shadow:0 8px 40px rgba(37,99,235,.15)}
 
 /* Footer */
-.footer{background:#0b1220;color:#d0d8e3;margin-top:40px;padding-top:28px}
+.footer{background:#0b1220;color:#d0d8e3;margin-top:40px;padding-top:28px;width:100%;}
 .footer-grid{
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px;padding-bottom:20px
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:20px;padding-bottom:20px;width:100%;
 }
 .footer .brand-text{color:#fff}
 .footer a{display:block;color:#c5cbe3;text-decoration:none;margin:6px 0}
@@ -145,7 +148,7 @@ body{
 .footer h5{margin:0 0 10px;color:#fff}
 .footer .socials a{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#111a2d;margin-right:8px}
 .footer-meta{
-  border-top:1px solid #14203a;color:#a9b4c8;padding:12px 0;display:flex;align-items:center;justify-content:space-between
+  border-top:1px solid #14203a;color:#a9b4c8;padding:12px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;width:100%;
 }
 .footer-meta a{display:inline-block;margin-left:14px;color:#a9b4c8}
 .footer-meta a:hover{color:#fff}
@@ -160,5 +163,4 @@ body{
   .hamburger{display:flex}
   .features-grid,.cards-3,.pricing{grid-template-columns:1fr}
   .cta-banner{flex-direction:column;align-items:flex-start}
-  .topbar{padding-inline:20px}
 }
